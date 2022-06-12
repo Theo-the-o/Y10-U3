@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Live Stock Data</title>
+    
+        <!----CSS---->
+        <style>
+
+            body {
+                background-color:rgb(195, 241, 195);
+                font-family:'Trebuchet MS';
+                margin: 0;
+            }
+
+            .textbox {
+                text-align:center;
+            }
+
+            .textbox > input {
+                text-align:center;
+                width:500px;
+                height:30px;
+                font-family:'Verdana';
+            }
+
+            .button {
+                text-align:center;
+                margin:10px;
+                border: none;
+            }
+
+            #enter {
+                background-color:rgb(12, 203, 31);
+                color:white;
+                font-family:'Trebuchet MS';
+                font-weight:bold;
+                font-size: 18px;
+                padding:7px;
+                text-align:center;
+                width: 20%;
+                border: none;
+            }
+
+            #enter:hover {
+                color:white;
+                background-color:rgb(120, 250, 133);
+                transition:0.2s ease-in;
+                cursor:pointer;
+            }
+
+            .text {
+                margin:40px;
+            }
+
+            div.table {
+                display:flex;
+                justify-content:center;
+            }
+
+            #info {
+                width:50%;
+            }
+
+            table {
+                border:1px solid black;
+            }
+
+            td,th{
+                border:1px solid black;
+            }
+
+            .place {
+                background-color:green;
+            }
+
+            .scroll-left {
+            height: 50px;	
+            overflow: hidden;
+            position: relative;
+            /*background: rgb(12, 203, 31);*/
+            background-image: url('Images/stock.jpg');
+            color: white;
+            font-family:'Trebuchet MS';
+            font-weight:bold;
+            font-size: 27px;
+            }
+
+            .scroll-left p {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            line-height: 50px;
+            text-align: center;
+            /* Starting position */
+            transform:translateX(100%);
+            /* Apply animation to this element */
+            animation: scroll-left 8s linear infinite;
+            
+            }
+
+            /* Move it (define the animation) */
+            @keyframes scroll-left {
+            0%   {
+            transform: translateX(100%); 		
+            }
+            100% {
+            transform: translateX(-100%); 
+            }
+            }
+
+            /*stock image for top bar*/
+            #stockimage {
+                width: 50%;
+                height: auto;
+            }
+
+            /*CSS for images at the bottom*/
+            #recessions {
+                width: 51%;
+                height: auto;
+            }
+
+            #sp500weight {
+                width: 48%;
+                height: 445px;
+            }
+
+            /*Table for S&P500 companies*/
+            #SP500list {
+                width: 30%;
+            }
+
+        </style>
+    </head>
+
+
+<!------HTML--------->
+    <body>
+
+        <div class="scroll-left">
+            <p>Live Stock Data </p>
+        </div>
+
+        <!---General Info--->
+        <div class="text">
+            <p>
+                <center>Enter the ticker symbol of any stock to see live data on its prices (look at table below for ticker symbols)!</center>
+            </p>
+        </div>
+
+
+        <div class=textbox>
+            <input id=input size="60" placeholder="Ticker Symbol">
+        </div>
+
+        <br>
+
+        <div class=button>
+            <button type='button' onclick=printInfo() id=enter>Show Data</button>
+        </div>
+        <br>
+
+        <!--The placeholder table for displaying the data, all with ids-->
+        <div class="table">
+            <table id='info'>
+                <tr>
+                    <th colspan="2" id="name"></th>
+                </tr>
+                <tr>
+                    <td class="place" id="1"></td>
+                </tr>
+                <tr>
+                    <td class="place" id="2"></td>
+                </tr>
+                <tr>
+                    <td class="place" id="3"></td>
+                </tr>
+                <tr>
+                    <td class="place" id="4"></td>
+                </tr>
+                <tr>
+                    <td class="place" id="5"></td>
+                </tr>
+                <tr>
+                    <td class="place" id="6"></td>
+                </tr>
+            </table>
+        </div>
+
+        <br><br><br> 
+        <!---IMAGES---->
+        <center>
+        <p>Below are some helpful images in understanding the performance of the S&P 500/US economy and what companies have the most impact on the S&P 500 index.  </p>
+        </center>
+
+        <img src="Images/recessions.jpg" id="recessions">
+        <img src="Images/sp500weight.jpg" id="sp500weight">
+        <br><br><br><br>
+
+        
+
+        <!---Table with possible options to type into search bar to receive data--->
+       <center>
+        <p>Reference this table below for some stocks that are valid to put into the search bar above! Specifically, the top 10 largest stocks in the S&P 500. </p>
+         <table id="SP500list">
+            <tr>
+              <th>#</th>
+              <th>Company</th>
+              <th>Symbol</th>
+              <th>Weight(%)</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Apple</td>
+              <td>AAPL</td>
+              <td>6.508</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Microsoft</td>
+              <td>MSFT</td>
+              <td>5.842</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Amazon</td>
+              <td>AMZN</td>
+              <td>2.992</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Google(1)</td>
+                <td>GOOGL</td>
+                <td>2.033</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Google(2)</td>
+                <td>GOOG</td>
+                <td>1.879</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Tesla</td>
+                <td>TSLA</td>
+                <td>1.772</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Berkshire Hathaway</td>
+                <td>BRK.B</td>
+                <td>1.622</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>United Health</td>
+                <td>UNH</td>
+                <td>1.357</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Johnson&Johnson</td>
+                <td>JNJ</td>
+                <td>1.346</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>Nividia</td>
+                <td>NVDA</td>
+                <td>1.328</td>
+              </tr>
+          </table>
+        </center>
+        <br><br><br>
+
+
+        <!--------Javascript------->
+        <script type='text/javascript'>
+
+            function TestsFunction() {
+                var T = document.getElementById("table"),
+                    displayValue = "";
+                if (T.style.display == "")
+                    displayValue = "none";
+
+                T.style.display = displayValue;
+            }
+
+
+            //Main variables
+            let data;
+            let input;
+            //Function for the data, defined key and url
+            function fetchData(input) {
+                key = 'caihi5iad3i2a9kca5n0';
+                url = `https://finnhub.io/api/v1/quote?symbol=${input}&token=${key}`; //variables fit in with string
+                //Promise based fetching of data
+                const data = fetch(url)
+                    .then(response => response.json()) //JSON format
+                    .then((data) => {
+                        //If data availabe
+                        if (data.c) {
+                            display(data);
+                        }
+                        //If there is an error
+                        else if (data.error) {
+                            alert(data.error);
+                        }
+                        //If nothing available
+                        else {
+                            alert('Sorry, data is unavailable for ' + input);
+                        }
+                    })
+            };
+
+            //Function for displaying the fetched data (getting elements)
+            function display(data) {
+                console.log(data);
+                console.log(input);
+                name = input + ' Stock Data (USD):';
+                document.getElementById('name').innerHTML = name;
+                current = data.c;
+                document.getElementById('1').innerHTML = "Current Price: " + "$" + current;
+                change = data.d;
+                document.getElementById('2').innerHTML = "Change In Daily Price: " + "$" + change;
+                per_change = data.dp;
+                document.getElementById('3').innerHTML = "Percent Change: " + per_change + "%";
+                high = data.h;
+                document.getElementById('4').innerHTML = "Today's high: " + "$" + high;
+                low = data.l;
+                document.getElementById('5').innerHTML = "Today's low: " + "$" + low;
+                openprice = data.o;
+                document.getElementById('6').innerHTML = "Open price: " + "$" + openprice;
+            };
+
+            //User input
+            function printInfo() {
+                //String converting in case of mistake by user:
+                input = document.getElementById('input').value.toUpperCase().replace(new RegExp(' ', 'g'), '');
+                fetchData(input);
+            };
+
+        </script>
+    </body>
